@@ -12,7 +12,7 @@ app.use(express.static(__dirname)); // Static files serve karega
 
 // Homepage (Render yahi file dhoond raha hota hai)
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));  // FIX: DIGI.html → index.html
+    res.sendFile(path.join(__dirname, "DIGI.html"));  // FIX: DIGI.html → index.html
 });
 
 // Email route
