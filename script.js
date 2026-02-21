@@ -1,30 +1,29 @@
-document.getElementById("contact-form").addEventListener("submit", async function(e) {
-    e.preventDefault();
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // page reload roko
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const message = document.getElementById("message").value;
 
     try {
-        const response = await fetch("/send", {
+        const res = await fetch("/send", {   // backend /send route
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, email, message })
         });
 
-        const data = await response.json();
+        const data = await res.json();
 
         if (data.success) {
-            alert("Message sent successfully ✅");
-            document.getElementById("contact-form").reset();
+            alert("✅ Message sent successfully!");
+            form.reset();
         } else {
-            alert("Failed to send message ❌");
+            alert("❌ Something went wrong, try again.");
         }
-
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Something went wrong ❌");
+    } catch (err) {
+        console.error(err);
+        alert("❌ Server error, check console.");
     }
 });
