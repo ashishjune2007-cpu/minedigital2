@@ -8,11 +8,11 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname)); // CSS + JS serve
+app.use(express.static(__dirname)); // Static files serve karega
 
-// Homepage
+// Homepage (Render yahi file dhoond raha hota hai)
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "DIGI.html"));
+    res.sendFile(path.join(__dirname, "index.html"));  // FIX: DIGI.html → index.html
 });
 
 // Email route
@@ -24,27 +24,29 @@ app.post("/send", async (req, res) => {
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: "ashishjune2007@gmail.com", // tumhara Gmail
-                pass: "xrzdlnkpcryuvhln"        // App password
+                user: "YOUR_EMAIL@gmail.com", // yaha password mat likhna chat me
+                pass: "YOUR_APP_PASSWORD"     // app password private rakho
             }
         });
 
         const mailOptions = {
-            from: "ashishjune2007@gmail.com",
-            to: "ashishjune2007@gmail.com",
+            from: "YOUR_EMAIL@gmail.com",
+            to: "YOUR_EMAIL@gmail.com",
             subject: "New Contact Form Message",
             text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
         };
 
         const info = await transporter.sendMail(mailOptions);
-        console.log("✅ Email Sent:", info.response);
+        console.log("Email Sent:", info.response);
         res.json({ success: true });
     } catch (error) {
-        console.log("❌ Email Error:", error);
+        console.log("Email Error:", error);
         res.status(500).json({ success: false, error: error.message });
     }
 });
 
 // Server start
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+app.listen(PORT, () =>
+    console.log(`Server running at http://localhost:${PORT}`)
+);
