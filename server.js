@@ -12,7 +12,7 @@ app.use(express.static(__dirname)); // Static files serve karega
 
 // Homepage
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "DIGI.HTML"));  // your file name EXACT
+    res.sendFile(path.join(__dirname, "DIGI.html"));  // your file name EXACT
 });
 
 // Email Route
