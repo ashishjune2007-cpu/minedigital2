@@ -1,13 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-
-  const form = document.getElementById("contact-form");
-
-  if (!form) {
-    console.log("Form not found");
-    return;
-  }
-
-  form.addEventListener("submit", async function (e) {
+document.getElementById("contact-form").addEventListener("submit", async function(e) {
     e.preventDefault();
 
     const name = document.getElementById("name").value;
@@ -15,24 +6,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const message = document.getElementById("message").value;
 
     try {
-      const res = await fetch("/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
-      });
+        const response = await fetch("/send", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, email, message })
+        });
 
-      const data = await res.json();
+        const data = await response.json();
 
-      if (data.success) {
-        alert("✅ Message sent successfully!");
-        form.reset();
-      } else {
-        alert("❌ Something went wrong.");
-      }
-    } catch (err) {
-      console.error("Error:", err);
-      alert("❌ Server error.");
+        if (data.success) {
+            alert("Message sent successfully ✅");
+            document.getElementById("contact-form").reset();
+        } else {
+            alert("Failed to send message ❌");
+        }
+
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Something went wrong ❌");
     }
-  });
-
-});;
+});
