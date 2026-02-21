@@ -1,14 +1,14 @@
 const form = document.getElementById("contact-form");
 
 form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // page reload roko
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const message = document.getElementById("message").value;
 
     try {
-        const res = await fetch("/send", {
+        const res = await fetch("/send", {   // backend /send route
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, email, message })
@@ -17,13 +17,13 @@ form.addEventListener("submit", async (e) => {
         const data = await res.json();
 
         if (data.success) {
-            alert("Message sent successfully!");
+            alert("✅ Message sent successfully!");
             form.reset();
         } else {
-            alert("Error sending message");
+            alert("❌ Something went wrong, try again.");
         }
     } catch (err) {
         console.error(err);
-        alert("Server error");
+        alert("❌ Server error, check console.");
     }
 });
