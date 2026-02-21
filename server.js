@@ -1,8 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const path = require("path");
-require("dotenv").config();
 
 const app = express();
 
@@ -22,10 +22,12 @@ app.post("/send", async (req, res) => {
 
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // true hota hai sirf port 465 ke liye
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        pass: process.env.EMAIL_PASS, // ⚠️ App Password lagana
       },
     });
 
@@ -42,10 +44,10 @@ Message: ${message}
 
     await transporter.sendMail(mailOptions);
 
-    res.json({ success: true });
+    res.json({ success: true, message: "Email sent successfully 🚀" });
   } catch (error) {
     console.error("Email Error:", error);
-    res.status(500).json({ success: false });
+    res.status(500).json({ success: false, message: "Email failed ❌" });
   }
 });
 
