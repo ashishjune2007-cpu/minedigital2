@@ -1,300 +1,1078 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MineDigital - Professional Digital Marketing & Website Development Agency in Greater Noida, Delhi NCR. Custom websites, SEO, Meta Ads, Google Ads, Branding & Growth Strategies that deliver real results.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="MineDigital - Premium Digital Marketing & Website Development Agency in Greater Noida, Delhi NCR. Custom websites, SEO, Meta Ads, Google Ads, Branding & Growth Strategies.">
     <meta name="keywords" content="digital marketing greater noida, website development delhi ncr, seo services, meta ads agency, ppc management">
     <meta name="author" content="MineDigital">
-    <title>MineDigital | Digital Marketing & Web Development Agency</title>
+    <meta name="theme-color" content="#00f5ff">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://minedigital.in">
+    <meta property="og:title" content="MineDigital | Premium Digital Marketing & Web Development Agency">
+    <meta property="og:description" content="Transform your business with premium websites and performance marketing. Serving Delhi NCR.">
+    <meta property="og:image" content="https://picsum.photos/id/237/1200/630">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://minedigital.in">
+    <meta property="twitter:title" content="MineDigital | Premium Digital Agency">
+    <meta property="twitter:description" content="Transform your business with premium websites and performance marketing.">
+    <meta property="twitter:image" content="https://picsum.photos/id/237/1200/630">
+    
+    <title>MineDigital | Premium Digital Marketing & Web Development Agency</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "MineDigital",
+        "url": "https://minedigital.in",
+        "logo": "https://minedigital.in/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-85275-65380",
+            "contactType": "Sales",
+            "areaServed": "IN",
+            "availableLanguage": ["English", "Hindi"]
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Greater Noida",
+            "addressRegion": "Uttar Pradesh",
+            "addressCountry": "IN"
+        },
+        "sameAs": [
+            "https://instagram.com/minedigital",
+            "https://linkedin.com/company/minedigital"
+        ]
+    }
+    </script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
         
-        :root { --primary: #00f5ff; }
-        body { font-family: 'Inter', sans-serif; }
+        :root { 
+            --primary: #00f5ff; 
+            --primary-dark: #00c8cc;
+            --accent: #a855f7;
+            --bg-dark: #0a0a0a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-dark);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            overflow-x: hidden;
+            cursor: none; /* Custom cursor */
+        }
+        
         .logo-font { font-family: 'Space Grotesk', sans-serif; }
-        .hero-bg { background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 245, 255, 0.15)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat; }
-        .service-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .service-card:hover { transform: translateY(-12px) scale(1.03); box-shadow: 0 25px 50px -12px rgb(0 245 255 / 0.25); }
-        .nav-link { position: relative; }
-        .nav-link:after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background-color: #00f5ff; transition: width 0.3s ease; }
-        .nav-link:hover:after { width: 100%; }
-        .glass { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); }
+        
+        /* Custom Cursor */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        
+        .cursor-dot {
+            width: 5px;
+            height: 5px;
+            background-color: var(--primary);
+        }
+        
+        .cursor-outline {
+            width: 30px;
+            height: 30px;
+            border: 1px solid rgba(0, 245, 255, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        
+        .cursor-outline.hover {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 245, 255, 0.1);
+            border-color: var(--primary);
+        }
+        
+        /* Hide custom cursor on mobile */
+        @media (pointer: coarse) {
+            body { cursor: auto; }
+            .cursor-dot, .cursor-outline { display: none; }
+        }
+        
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            z-index: 100;
+            transition: width 0.1s;
+        }
+        
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .preloader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 245, 255, 0.3);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Aurora Background Effect */
+        .aurora-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        .aurora-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 20%, rgba(0, 245, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(0, 245, 255, 0.05) 0%, transparent 50%);
+            animation: aurora 20s ease infinite;
+            pointer-events: none;
+        }
+        @keyframes aurora {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        }
+        
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(0, 245, 255, 0.5);
+            border-radius: 50%;
+            animation: float-particle 15s infinite;
+        }
+        
+        @keyframes float-particle {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+            }
+        }
+        
+        /* Glass Morphism Premium */
+        .glass-premium {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Animated Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #00f5ff 0%, #a855f7 50%, #00f5ff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bento-col-span-2 {
+                grid-column: span 2;
+            }
+        }
+        @media (min-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .bento-col-span-2 {
+                grid-column: span 2;
+            }
+        }
+        
+        /* Premium Card Hover */
+        .premium-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: left 0.5s;
+        }
+        .premium-card:hover::before {
+            left: 100%;
+        }
+        .premium-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 245, 255, 0.15);
+            border-color: rgba(0, 245, 255, 0.3);
+        }
+        
+        /* Pricing Card Featured */
+        .pricing-featured {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(168, 85, 247, 0.1));
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            position: relative;
+        }
+        .pricing-featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #00f5ff, #a855f7);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            letter-spacing: 0.05em;
+            animation: pulse-badge 2s infinite;
+        }
+        
+        @keyframes pulse-badge {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(0, 245, 255, 0); }
+        }
+        
+        /* Counter Animation */
+        .counter-value {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* FAQ Accordion */
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+        }
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        .faq-item:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+        }
+        
+        /* Smooth Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f5ff;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Glow Effect */
+        .glow {
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+        }
+        .glow:hover {
+            box-shadow: 0 0 40px rgba(0, 245, 255, 0.5);
+        }
+        
+        /* Stagger Animation Delays */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        
+        /* Better focus states */
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { 
+            outline: 2px solid #00f5ff; 
+            outline-offset: 2px; 
+        }
+        
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .toast {
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        .toast-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .toast-success .toast-icon {
+            background: rgba(0, 245, 255, 0.2);
+            color: #00f5ff;
+        }
+        
+        .toast-error .toast-icon {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+            color: var(--primary);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+        }
+        
+        /* Portfolio Filter */
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            color: #9ca3af;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.875rem;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(0, 245, 255, 0.1);
+            border-color: rgba(0, 245, 255, 0.5);
+            color: #00f5ff;
+        }
+        
+        .portfolio-item {
+            transition: all 0.5s;
+        }
+        
+        .portfolio-item.hidden {
+            display: none;
+        }
+        
+        /* Image Skeleton Loading */
+        .img-skeleton {
+            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { 
+                animation-duration: 0.01ms !important; 
+                transition-duration: 0.01ms !important; 
+            }
+        }
     </style>
 </head>
-<body class="bg-zinc-950 text-white overflow-x-hidden">
+<body class="text-white antialiased">
 
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center">
-            <div class="flex items-center gap-2 sm:gap-3">
-                <div class="w-8 h-8 sm:w-9 sm:h-9 bg-cyan-400 rounded-2xl flex items-center justify-center text-black font-bold text-xl sm:text-2xl logo-font">M</div>
-                <div class="flex flex-col sm:flex-row sm:items-baseline">
-                    <span class="logo-font text-2xl sm:text-3xl font-semibold tracking-tighter">Mine</span>
-                    <span class="logo-font text-2xl sm:text-3xl font-semibold tracking-tighter text-cyan-400">Digital</span>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="flex flex-col items-center gap-4">
+            <div class="preloader-spinner"></div>
+            <div class="logo-font text-xl font-bold tracking-tight">Mine<span class="text-cyan-400">Digital</span></div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300" id="navbar" role="navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3 group cursor-pointer magnetic-link" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-xl flex items-center justify-center text-black font-bold text-xl logo-font shadow-lg shadow-cyan-400/20 group-hover:scale-110 transition-transform">M</div>
+                    <div class="flex flex-col">
+                        <span class="logo-font text-2xl font-bold tracking-tight">Mine<span class="text-cyan-400">Digital</span></span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="hidden lg:flex items-center gap-6 xl:gap-10 text-base lg:text-lg">
-                <a href="#services" class="nav-link font-medium hover:text-cyan-400 transition">Services</a>
-                <a href="#work" class="nav-link font-medium hover:text-cyan-400 transition">Work</a>
-                <a href="#about" class="nav-link font-medium hover:text-cyan-400 transition">About</a>
-                <a href="#contact" class="nav-link font-medium hover:text-cyan-400 transition">Contact</a>
-            </div>
+                
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#services" class="text-sm font-medium text-zinc-300 hover:text-white transition-colors relative group magnetic-link">
+                        Services
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#pricing" class="text-sm font-medium text-zinc-300 hover:text-white transition-colors relative group magnetic-link">
+                        Pricing
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#work" class="text-sm font-medium text-zinc-300 hover:text-white transition-colors relative group magnetic-link">
+                        Work
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="text-sm font-medium text-zinc-300 hover:text-white transition-colors relative group magnetic-link">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-cyan-400 transition-all text-sm shadow-lg hover:shadow-cyan-400/25 magnetic-link">
+                        Start Project
+                    </a>
+                </div>
 
-            <a href="https://wa.me/918527565380?text=Hi%20MineDigital%2C%20I'd%20like%20to%20book%20a%20free%20strategy%20call%20for%20my%20business." 
-               class="hidden sm:flex px-5 py-2.5 sm:px-8 sm:py-3.5 bg-white text-black font-semibold rounded-2xl hover:bg-cyan-400 hover:text-white transition-all items-center gap-2 text-sm sm:text-base">
-                <i class="fas fa-rocket"></i> Free Strategy Call
-            </a>
-
-            <button id="mobile-menu-btn" class="lg:hidden text-2xl sm:text-3xl">
-                <i class="fas fa-bars"></i>
-            </button>
+                <button id="mobile-menu-btn" class="lg:hidden text-2xl p-2 rounded-lg hover:bg-white/10 transition magnetic-link" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-zinc-900 border-t border-white/10 py-6 px-4">
-            <div class="flex flex-col items-center gap-6 text-xl">
-                <a href="#services" class="mobile-link">Services</a>
-                <a href="#work" class="mobile-link">Work</a>
-                <a href="#about" class="mobile-link">About</a>
-                <a href="#contact" class="mobile-link">Contact</a>
-                <a href="https://wa.me/918527565380?text=Hi%20MineDigital%2C%20book%20a%20free%20strategy%20call." 
-                   class="mt-4 px-8 py-4 bg-cyan-400 text-black font-bold rounded-3xl text-lg">
-                    Book Consultation
-                </a>
+        <div id="mobile-menu" class="hidden lg:hidden glass-nav border-t border-white/10 absolute w-full">
+            <div class="flex flex-col p-6 gap-4">
+                <a href="#services" class="text-lg font-medium py-2 hover:text-cyan-400 transition">Services</a>
+                <a href="#pricing" class="text-lg font-medium py-2 hover:text-cyan-400 transition">Pricing</a>
+                <a href="#work" class="text-lg font-medium py-2 hover:text-cyan-400 transition">Work</a>
+                <a href="#about" class="text-lg font-medium py-2 hover:text-cyan-400 transition">About</a>
+                <a href="#contact" class="mt-4 px-6 py-4 bg-cyan-400 text-black font-bold rounded-full text-center">Start Project</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero-bg min-h-screen flex items-center pt-20 sm:pt-24">
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
-            <div class="max-w-4xl">
-                <div class="inline-flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-md px-4 py-2 sm:px-6 sm:py-3 rounded-3xl mb-6 sm:mb-8 border border-white/20 text-xs sm:text-base">
-                    <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                    <span class="uppercase tracking-[3px] font-medium">Greater Noida • Delhi NCR</span>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 aurora-bg overflow-hidden">
+        <!-- Particles -->
+        <div class="particles" id="particles"></div>
+        
+        <!-- Abstract floating elements -->
+        <div class="absolute top-1/4 left-10 w-64 h-64 bg-cyan-400/20 rounded-full blur-3xl floating" style="animation-delay: 0s;"></div>
+        <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl floating" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-8 reveal stagger-1 hover:border-cyan-400/50 transition-colors cursor-default">
+                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+                    <span class="text-sm text-zinc-300 tracking-wide">Available for projects in Delhi NCR</span>
                 </div>
                 
-                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter logo-font">
-                    Elevate Your Brand.<br>
-                    <span class="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Drive Real Growth.</span>
+                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 reveal stagger-2 leading-[1.1]">
+                    We Build <br>
+                    <span class="gradient-text">Digital Excellence</span>
                 </h1>
                 
-                <p class="mt-6 sm:mt-8 text-xl sm:text-2xl md:text-3xl text-zinc-300 max-w-xl md:max-w-2xl">
-                    We create high-converting websites and run performance-driven digital marketing campaigns that deliver measurable results.
+                <p class="text-xl sm:text-2xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed reveal stagger-3">
+                    Premium websites and performance marketing that transforms businesses into market leaders. Based in Greater Noida, serving Delhi NCR.
                 </p>
                 
-                <div class="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6">
-                    <a href="#contact" 
-                       class="px-8 py-5 sm:px-10 sm:py-6 bg-cyan-400 hover:bg-cyan-300 text-black font-semibold text-lg sm:text-xl rounded-3xl flex items-center justify-center gap-3 transition-all hover:scale-105">
-                        <i class="fas fa-arrow-right"></i> Get Free Consultation
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center reveal stagger-4">
+                    <a href="#pricing" class="px-8 py-4 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-bold rounded-full hover:shadow-lg hover:shadow-cyan-400/30 transition-all transform hover:-translate-y-1 text-lg magnetic-link">
+                        View Pricing
                     </a>
-                    <a href="#work" 
-                       class="px-8 py-5 sm:px-10 sm:py-6 border-2 border-white/70 hover:border-white font-semibold text-lg sm:text-xl rounded-3xl transition-all hover:scale-105 text-center">
-                        View Our Work →
+                    <a href="#work" class="px-8 py-4 border border-white/20 rounded-full font-medium hover:bg-white/5 transition-all flex items-center gap-2 group magnetic-link">
+                        See Our Work 
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
                 
-                <div class="mt-10 sm:mt-16 flex flex-wrap items-center gap-6 sm:gap-10 text-sm sm:text-base">
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-check text-emerald-400"></i> <span>10+ Projects Delivered</span>
+                <!-- Stats -->
+                <div class="mt-20 grid grid-cols-3 gap-8 border-t border-white/10 pt-10 reveal">
+                    <div class="group cursor-default">
+                        <div class="text-3xl sm:text-5xl font-bold text-white counter-value" data-target="50">0</div>
+                        <div class="text-sm text-zinc-500 mt-2 group-hover:text-cyan-400 transition-colors">Projects Delivered</div>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-check text-emerald-400"></i> <span>Proven Results for NCR Brands</span>
+                    <div class="group cursor-default">
+                        <div class="text-3xl sm:text-5xl font-bold text-white counter-value" data-target="10">0</div>
+                        <div class="text-sm text-zinc-500 mt-2 group-hover:text-cyan-400 transition-colors">Years Experience</div>
+                    </div>
+                    <div class="group cursor-default">
+                        <div class="text-3xl sm:text-5xl font-bold text-white counter-value" data-target="98">0</div>
+                        <div class="text-sm text-zinc-500 mt-2 group-hover:text-cyan-400 transition-colors">Client Satisfaction %</div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="absolute bottom-8 left-1/2 hidden sm:flex flex-col items-center gap-2 text-xs tracking-widest">
-            <div class="w-px h-12 sm:h-16 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
-            SCROLL TO EXPLORE
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-xs text-zinc-500 animate-bounce cursor-pointer magnetic-link" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
+            <span>SCROLL</span>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="py-20 sm:py-28 bg-zinc-950">
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 sm:mb-16">
-                <span class="px-4 py-1.5 sm:px-5 sm:py-2 bg-cyan-400/10 text-cyan-400 rounded-full text-xs sm:text-sm font-medium">OUR EXPERTISE</span>
-                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mt-4 sm:mt-5 tracking-tight">Services Built for <span class="text-cyan-400">Real Growth</span></h2>
+    <!-- Trusted By -->
+    <section class="py-12 border-y border-white/5 bg-zinc-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-sm text-zinc-500 mb-8 uppercase tracking-widest">Trusted by Innovative Brands</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="text-2xl font-bold logo-font hover:text-cyan-400 transition-colors cursor-pointer magnetic-link">identlify.in</div>
+                <div class="text-2xl font-bold logo-font hover:text-cyan-400 transition-colors cursor-pointer magnetic-link">PeelPure.in</div>
+                <div class="text-2xl font-bold logo-font hover:text-cyan-400 transition-colors cursor-pointer magnetic-link">FitFlex</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services - Bento Grid -->
+    <section id="services" class="py-24 bg-zinc-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-4 block">Our Services</span>
+                <h2 class="text-4xl sm:text-5xl font-bold mb-6">Everything You Need to <span class="text-cyan-400">Scale</span></h2>
+                <p class="text-zinc-400 max-w-2xl mx-auto text-lg">Full-stack digital solutions designed for growth-focused businesses in Delhi NCR.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <div class="service-card bg-zinc-900 rounded-3xl p-6 sm:p-10 border border-white/10 group">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl mb-6 sm:mb-8">🌐</div>
-                    <h3 class="text-2xl sm:text-3xl font-semibold mb-3 sm:mb-4">Website Development</h3>
-                    <p class="text-zinc-400 text-base sm:text-lg leading-relaxed">High-performance, conversion-optimized websites and e-commerce platforms that rank well and drive sales.</p>
-                    <ul class="mt-6 sm:mt-8 space-y-2 sm:space-y-3 text-sm sm:text-base">
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-cyan-400"></i> Custom & Responsive Design</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-cyan-400"></i> WordPress, Shopify, Webflow</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-cyan-400"></i> SEO-Ready & Fast Loading</li>
-                    </ul>
-                    <a href="#contact" class="mt-6 sm:mt-10 inline-flex items-center gap-2 text-cyan-400 font-medium group-hover:gap-4 transition-all text-sm sm:text-base">Request Quote →</a>
+            <div class="bento-grid">
+                <!-- Large Card: Web Development -->
+                <div class="bento-col-span-2 glass-premium rounded-3xl p-8 sm:p-10 premium-card reveal group relative overflow-hidden cursor-pointer">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:bg-cyan-400/20 transition-all duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-lg shadow-cyan-400/20 group-hover:scale-110 transition-transform">🌐</div>
+                        <h3 class="text-2xl sm:text-3xl font-bold mb-4">Website Development</h3>
+                        <p class="text-zinc-400 mb-6 leading-relaxed max-w-xl">Premium, conversion-optimized websites built with cutting-edge technology. From sleek landing pages to complex e-commerce platforms.</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-white/5 rounded-full text-sm border border-white/10 hover:border-cyan-400/50 transition-colors">React / Next.js</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-full text-sm border border-white/10 hover:border-cyan-400/50 transition-colors">Shopify</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-full text-sm border border-white/10 hover:border-cyan-400/50 transition-colors">WordPress</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-full text-sm border border-white/10 hover:border-cyan-400/50 transition-colors">Webflow</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Digital Marketing -->
-                <div class="service-card bg-zinc-900 rounded-3xl p-6 sm:p-10 border border-white/10 group">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-pink-400 to-rose-500 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl mb-6 sm:mb-8">📈</div>
-                    <h3 class="text-2xl sm:text-3xl font-semibold mb-3 sm:mb-4">Digital Marketing</h3>
-                    <p class="text-zinc-400 text-base sm:text-lg leading-relaxed">Results-driven campaigns across Meta, Google, SEO, and content to generate qualified leads and revenue.</p>
-                    <ul class="mt-6 sm:mt-8 space-y-2 sm:space-y-3 text-sm sm:text-base">
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-cyan-400"></i> Meta & Google Ads Management</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-cyan-400"></i> Local & National SEO</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-cyan-400"></i> Social Media Growth</li>
-                    </ul>
-                    <a href="#contact" class="mt-6 sm:mt-10 inline-flex items-center gap-2 text-cyan-400 font-medium group-hover:gap-4 transition-all text-sm sm:text-base">Start Campaign →</a>
+                <!-- Card: SEO -->
+                <div class="glass-premium rounded-3xl p-8 premium-card reveal stagger-1 cursor-pointer group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center text-xl mb-4 shadow-lg shadow-emerald-400/20 group-hover:scale-110 transition-transform">📈</div>
+                    <h3 class="text-xl font-bold mb-3">SEO & Content</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-4">Dominate Google rankings with data-driven SEO strategies and premium content marketing.</p>
+                    <a href="#contact" class="text-cyan-400 text-sm font-medium hover:gap-2 transition-all flex items-center gap-1 magnetic-link">Learn more →</a>
                 </div>
                 
-                <!-- Branding -->
-                <div class="service-card bg-zinc-900 rounded-3xl p-6 sm:p-10 border border-white/10 group">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl mb-6 sm:mb-8">✨</div>
-                    <h3 class="text-2xl sm:text-3xl font-semibold mb-3 sm:mb-4">Branding & Creative</h3>
-                    <p class="text-zinc-400 text-base sm:text-lg leading-relaxed">Complete brand identity, logos, video content, reels, and visuals that make your brand stand out.</p>
-                    <ul class="mt-6 sm:mt-8 space-y-2 sm:space-y-3 text-sm sm:text-base">
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-cyan-400"></i> Brand Strategy & Identity</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-cyan-400"></i> Short-Form Video Content</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-cyan-400"></i> Professional Graphics & Design</li>
-                    </ul>
-                    <a href="#contact" class="mt-6 sm:mt-10 inline-flex items-center gap-2 text-cyan-400 font-medium group-hover:gap-4 transition-all text-sm sm:text-base">Build Brand →</a>
+                <!-- Card: Ads -->
+                <div class="glass-premium rounded-3xl p-8 premium-card reveal stagger-2 cursor-pointer group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-600 rounded-xl flex items-center justify-center text-xl mb-4 shadow-lg shadow-purple-400/20 group-hover:scale-110 transition-transform">🎯</div>
+                    <h3 class="text-xl font-bold mb-3">Paid Advertising</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-4">Meta & Google Ads with precision targeting. ROAS-focused campaigns that actually convert.</p>
+                    <a href="#contact" class="text-cyan-400 text-sm font-medium hover:gap-2 transition-all flex items-center gap-1 magnetic-link">Learn more →</a>
+                </div>
+                
+                <!-- Wide Card: Branding -->
+                <div class="bento-col-span-2 glass-premium rounded-3xl p-8 sm:p-10 premium-card reveal stagger-3 cursor-pointer group">
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div class="flex-1">
+                            <div class="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-lg shadow-amber-400/20 group-hover:scale-110 transition-transform">✨</div>
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4">Branding & Creative</h3>
+                            <p class="text-zinc-400 mb-6 leading-relaxed">Complete brand identity systems, viral video content, and creative strategies that make you unforgettable.</p>
+                            <ul class="space-y-2 text-sm text-zinc-400">
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Logo & Visual Identity</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Short-form Video Content</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Brand Strategy</li>
+                            </ul>
+                        </div>
+                        <div class="flex-1 w-full">
+                            <div class="bg-zinc-900 rounded-2xl p-6 border border-white/10 group-hover:border-cyan-400/30 transition-colors">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 animate-pulse"></div>
+                                    <div>
+                                        <div class="font-bold">Brand Kit</div>
+                                        <div class="text-xs text-zinc-500">Complete Package</div>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="h-2 bg-zinc-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-gradient-to-r from-cyan-400 to-purple-500 w-3/4 rounded-full"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-zinc-500">
+                                        <span>Recognition</span>
+                                        <span class="text-cyan-400 font-bold">+340%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WORK -->
-    <section id="work" class="py-20 sm:py-28 bg-black">
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 sm:mb-16">
-                <span class="uppercase text-cyan-400 text-xs sm:text-sm font-medium tracking-widest">Portfolio</span>
-                <h2 class="text-4xl sm:text-5xl font-bold tracking-tight">Our Recent Work</h2>
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-zinc-950 to-black"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <span class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-4 block">Investment</span>
+                <h2 class="text-4xl sm:text-5xl font-bold mb-6">Simple, Transparent <span class="gradient-text">Pricing</span></h2>
+                <p class="text-zinc-400 max-w-2xl mx-auto text-lg">No hidden fees. Choose the package that fits your growth stage.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <div class="group relative overflow-hidden rounded-3xl aspect-video bg-zinc-900">
-                    <img src="https://picsum.photos/id/1016/800/600" alt="Project 1" class="w-full h-full object-cover transition-all group-hover:scale-110 duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6 sm:p-8">
-                        <div>
-                            <p class="text-cyan-400 text-xs sm:text-sm">E-commerce Fashion Brand</p>
-                            <p class="text-xl sm:text-2xl font-semibold">UrbanThread</p>
-                        </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Starter -->
+                <div class="glass-premium rounded-3xl p-8 premium-card reveal stagger-1 flex flex-col hover:border-cyan-400/30 transition-colors">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-2">Starter</h3>
+                        <p class="text-zinc-400 text-sm">Perfect for small businesses just starting out.</p>
                     </div>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">₹15,000</span>
+                        <span class="text-zinc-500">/project</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>5-Page Responsive Website</span> 
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>Basic SEO Setup</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>Social Media Setup</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>1 Month Support</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="w-full py-4 border border-white/20 rounded-full text-center font-medium hover:bg-white/5 transition-colors magnetic-link">
+                        Get Started
+                    </a>
                 </div>
                 
-                <div class="group relative overflow-hidden rounded-3xl aspect-video bg-zinc-900">
-                    <img src="https://picsum.photos/id/133/800/600" alt="Project 2" class="w-full h-full object-cover transition-all group-hover:scale-110 duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6 sm:p-8">
-                        <div>
-                            <p class="text-cyan-400 text-xs sm:text-sm">Local Cafe Chain</p>
-                            <p class="text-xl sm:text-2xl font-semibold">ChaiWala Cafe</p>
-                        </div>
+                <!-- Growth (Featured) -->
+                <div class="pricing-featured rounded-3xl p-8 premium-card reveal stagger-2 flex flex-col transform md:-translate-y-4 hover:shadow-2xl hover:shadow-cyan-400/20 transition-all">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-2 text-cyan-400">Growth</h3>
+                        <p class="text-zinc-400 text-sm">For businesses ready to scale aggressively.</p>
                     </div>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">₹39000</span>
+                        <span class="text-zinc-500">/month</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>Custom Website + CMS</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>Complete SEO & Content Strategy</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>Meta & Google Ads Management</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>Weekly Analytics Reports</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>Dedicated Account Manager</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="w-full py-4 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black rounded-full text-center font-bold hover:shadow-lg hover:shadow-cyan-400/30 transition-all magnetic-link">
+                        Start Growing
+                    </a>
                 </div>
                 
-                <div class="group relative overflow-hidden rounded-3xl aspect-video bg-zinc-900">
-                    <img src="https://picsum.photos/id/201/800/600" alt="Project 3" class="w-full h-full object-cover transition-all group-hover:scale-110 duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6 sm:p-8">
-                        <div>
-                            <p class="text-cyan-400 text-xs sm:text-sm">Fitness Studio</p>
-                            <p class="text-xl sm:text-2xl font-semibold">FitFlex Gym</p>
-                        </div>
+                <!-- Enterprise -->
+                <div class="glass-premium rounded-3xl p-8 premium-card reveal stagger-3 flex flex-col hover:border-cyan-400/30 transition-colors">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+                        <p class="text-zinc-400 text-sm">Full-service digital transformation.</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="py-20 sm:py-28 bg-zinc-950">
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <div>
-                    <img src="https://picsum.photos/id/64/800/900" alt="Team" class="rounded-3xl shadow-2xl w-full object-cover">
-                </div>
-                <div class="space-y-6 sm:space-y-8">
-                    <h2 class="text-4xl sm:text-5xl font-bold leading-tight">We're Your Growth Partners, Not Just Another Agency</h2>
-                    <p class="text-xl sm:text-2xl text-zinc-400">
-                        Based in Greater Noida, MineDigital helps businesses across Delhi NCR scale online with high-converting websites and performance marketing that drives real revenue.
-                    </p>
-                    <div class="grid grid-cols-3 gap-6 text-center">
-                        <div>
-                            <div class="text-4xl sm:text-5xl font-bold text-cyan-400">10+</div>
-                            <div class="text-xs sm:text-sm text-zinc-500 mt-1">Projects Delivered</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl sm:text-5xl font-bold text-cyan-400">₹2L+</div>
-                            <div class="text-xs sm:text-sm text-zinc-500 mt-1">Client Revenue Generated</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl sm:text-5xl font-bold text-cyan-400">★★★★☆</div>
-                            <div class="text-xs sm:text-sm text-zinc-500 mt-1">Client Satisfaction</div>
-                        </div>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">Custom</span>
                     </div>
-                    <a href="https://wa.me/918527565380?text=Hi%20MineDigital%2C%20let's%20discuss%20how%20we%20can%20grow%20your%20business." 
-                       class="inline-block px-8 py-4 sm:px-10 sm:py-5 bg-white text-black font-semibold rounded-2xl hover:bg-cyan-400 transition text-base sm:text-lg">
-                        Let's Build Something Exceptional →
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>Everything in Growth, plus:</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>Custom Web Application</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>Full Brand Identity Package</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>Video Production & Reels</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-check text-cyan-400 mt-1"></i>
+                            <span>24/7 Priority Support</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="w-full py-4 border border-white/20 rounded-full text-center font-medium hover:bg-white/5 transition-colors magnetic-link">
+                        Contact Sales
                     </a>
                 </div>
             </div>
+            
+            <div class="mt-12 text-center text-zinc-500 text-sm reveal">
+                All plans include GST. Need something specific? <a href="#contact" class="text-cyan-400 hover:underline magnetic-link">Let's talk</a>.
+            </div>
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="py-20 sm:py-28 bg-black">
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-4xl sm:text-5xl font-bold">Client Success Stories</h2>
-                <p class="text-lg sm:text-xl text-zinc-400 mt-4">Real results from businesses we've helped grow in Delhi NCR.</p>
+    <!-- Process -->
+    <section class="py-24 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <span class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-4 block">How We Work</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6">A Proven Process for <span class="text-cyan-400">Predictable Growth</span></h2>
+                    <p class="text-zinc-400 text-lg mb-8">We don't just deliver projects; we build partnerships. Our systematic approach ensures transparency and results.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-4 group cursor-default">
+                            <div class="w-12 h-12 rounded-full bg-cyan-400/10 flex items-center justify-center text-cyan-400 font-bold text-lg flex-shrink-0 border border-cyan-400/20 group-hover:bg-cyan-400 group-hover:text-black transition-all">01</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors">Discovery & Strategy</h3>
+                                <p class="text-zinc-400">Deep dive into your business, competitors, and market opportunities.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 group cursor-default">
+                            <div class="w-12 h-12 rounded-full bg-purple-400/10 flex items-center justify-center text-purple-400 font-bold text-lg flex-shrink-0 border border-purple-400/20 group-hover:bg-purple-400 group-hover:text-black transition-all">02</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">Design & Development</h3>
+                                <p class="text-zinc-400">Premium design with clean, scalable code. Weekly check-ins.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 group cursor-default">
+                            <div class="w-12 h-12 rounded-full bg-pink-400/10 flex items-center justify-center text-pink-400 font-bold text-lg flex-shrink-0 border border-pink-400/20 group-hover:bg-pink-400 group-hover:text-black transition-all">03</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 group-hover:text-pink-400 transition-colors">Launch & Optimize</h3>
+                                <p class="text-zinc-400">Data-driven optimization to maximize ROI and conversion rates.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative reveal stagger-2">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-3xl opacity-20 blur-2xl"></div>
+                    <div class="relative glass-premium rounded-3xl p-8 border border-white/10 hover:border-cyan-400/30 transition-all">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-black/40 rounded-xl hover:bg-black/60 transition-colors group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">Traffic Increase</div>
+                                        <div class="text-xs text-zinc-500">Last 30 days</div>
+                                    </div>
+                                </div>
+                                <div class="text-emerald-400 font-bold text-lg">+284%</div>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-black/40 rounded-xl hover:bg-black/60 transition-colors group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-mouse-pointer"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">Conversion Rate</div>
+                                        <div class="text-xs text-zinc-500">Average</div>
+                                    </div>
+                                </div>
+                                <div class="text-cyan-400 font-bold text-lg">12.5%</div>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-black/40 rounded-xl hover:bg-black/60 transition-colors group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-rupee-sign"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">Revenue Generated</div>
+                                        <div class="text-xs text-zinc-500">For clients</div>
+                                    </div>
+                                </div>
+                                <div class="text-purple-400 font-bold text-lg">₹5Cr+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Portfolio -->
+    <section id="work" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div>
+                    <span class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-4 block">Portfolio</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold">Featured <span class="gradient-text">Work</span></h2>
+                </div>
+                <div class="flex gap-2 mt-4 md:mt-0 flex-wrap">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="marketing">Marketing</button>
+                    <button class="filter-btn" data-filter="branding">Branding</button>
+                </div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                <div class="bg-zinc-900 p-6 sm:p-8 rounded-3xl">
-                    <div class="flex gap-1 text-amber-400 text-xl sm:text-2xl mb-4 sm:mb-6">★★★★★</div>
-                    <p class="text-base sm:text-lg italic">"Website + Meta ads delivered ₹1.2 Lakh extra sales in the first month. Outstanding team."</p>
-                    <div class="mt-6 sm:mt-8 flex items-center gap-3 sm:gap-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-700 rounded-full"></div>
-                        <div>
-                            <div class="font-semibold text-sm sm:text-base">Rohit Sharma</div>
-                            <div class="text-xs sm:text-sm text-zinc-500">Owner, ChaiWala Cafe</div>
-                        </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+                <div class="group relative aspect-[4/3] rounded-2xl overflow-hidden reveal stagger-1 portfolio-item" data-category="web">
+                    <div class="img-skeleton absolute inset-0"></div>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" alt="UrbanThread" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-cyan-400 text-sm font-medium mb-1">E-commerce</span>
+                        <h3 class="text-2xl font-bold">Identlify</h3>
+                        <p class="text-zinc-300 text-sm mt-2">300% increase in online sales</p>
                     </div>
                 </div>
                 
-                <div class="bg-zinc-900 p-6 sm:p-8 rounded-3xl">
-                    <div class="flex gap-1 text-amber-400 text-xl sm:text-2xl mb-4 sm:mb-6">★★★★★</div>
-                    <p class="text-base sm:text-lg italic">"SEO work got us to #1 on Google. Monthly leads tripled, revenue up by ₹80k+ per month."</p>
-                    <div class="mt-6 sm:mt-8 flex items-center gap-3 sm:gap-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-700 rounded-full"></div>
-                        <div>
-                            <div class="font-semibold text-sm sm:text-base">Neha Kapoor</div>
-                            <div class="text-xs sm:text-sm text-zinc-500">Founder, FitFlex Gym</div>
-                        </div>
+                <div class="group relative aspect-[4/3] rounded-2xl overflow-hidden reveal stagger-2 portfolio-item" data-category="marketing">
+                    <div class="img-skeleton absolute inset-0"></div>
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" alt="PeelPure" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-cyan-400 text-sm font-medium mb-1">E-commerce</span>
+                        <h3 class="text-2xl font-bold">PeelPure.in</h3>
+                        <p class="text-zinc-300 text-sm mt-2">50+ daily leads via Instagram</p>
+                    </div>
+                </div>                
+                <div class="group relative aspect-[4/3] rounded-2xl overflow-hidden reveal stagger-3 portfolio-item" data-category="branding">
+                    <div class="img-skeleton absolute inset-0"></div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="FitFlex" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.style.display='none'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-cyan-400 text-sm font-medium mb-1">Branding</span>
+                        <h3 class="text-2xl font-bold">Praash</h3>
+                        <p class="text-zinc-300 text-sm mt-2">Complete brand identity redesign</p>
                     </div>
                 </div>
-                
-                <div class="bg-zinc-900 p-6 sm:p-8 rounded-3xl">
-                    <div class="flex gap-1 text-amber-400 text-xl sm:text-2xl mb-4 sm:mb-6">★★★★★</div>
-                    <p class="text-base sm:text-lg italic">"New website and Instagram strategy doubled sales. ₹2.5 Lakh+ additional revenue in 3 months."</p>
-                    <div class="mt-6 sm:mt-8 flex items-center gap-3 sm:gap-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-700 rounded-full"></div>
-                        <div>
-                            <div class="font-semibold text-sm sm:text-base">Aarav Malhotra</div>
-                            <div class="text-xs sm:text-sm text-zinc-500">Owner, UrbanThread</div>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button id="load-more" class="px-8 py-3 border border-white/20 rounded-full hover:bg-white/5 transition-colors magnetic-link">
+                    Load More Projects
+                </button>
+            </div>
+        </div>
+    </section>
 
-                <div class="bg-zinc-900 p-6 sm:p-8 rounded-3xl">
-                    <div class="flex gap-1 text-amber-400 text-xl sm:text-2xl mb-4 sm:mb-6">★★★★★</div>
-                    <p class="text-base sm:text-lg italic">"Website redesign + SEO for Identify.in – organic traffic 4x, major increase in inquiries. Excellent execution."</p>
-                    <div class="mt-6 sm:mt-8 flex items-center gap-3 sm:gap-4">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-700 rounded-full"></div>
+    <!-- Testimonials -->
+    <section class="py-24 bg-zinc-950 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-4 block">Testimonials</span>
+                <h2 class="text-4xl sm:text-5xl font-bold">Client <span class="gradient-text">Success</span> Stories</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-premium rounded-3xl p-8 reveal stagger-1 hover:border-cyan-400/30 transition-all cursor-pointer group">
+                    <div class="flex text-cyan-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-zinc-300 mb-6 leading-relaxed group-hover:text-white transition-colors">"MineDigital transformed our online presence completely. The new website + Meta ads delivered ₹1.2 Lakh in extra sales in just the first month."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-black font-bold group-hover:scale-110 transition-transform">RS</div>
                         <div>
-                            <div class="font-semibold text-sm sm:text-base">Team Identify.in</div>
-                            <div class="text-xs sm:text-sm text-zinc-500">Greater Noida</div>
+                            <div class="font-bold">Shiv Kumar</div>
+                            <div class="text-sm text-zinc-500">Identlify.in</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-premium rounded-3xl p-8 reveal stagger-2 lg:translate-y-8 hover:border-cyan-400/30 transition-all cursor-pointer group">
+                    <div class="flex text-cyan-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-zinc-300 mb-6 leading-relaxed group-hover:text-white transition-colors">"Professional, responsive, and results-driven. Our SEO rankings jumped to #1 on Google within 3 months. Highly recommend their Growth package."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-black font-bold group-hover:scale-110 transition-transform">NK</div>
+                        <div>
+                            <div class="font-bold">Sanjana</div>
+                            <div class="text-sm text-zinc-500">Director, PeelPure.in</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-premium rounded-3xl p-8 reveal stagger-3 hover:border-cyan-400/30 transition-all cursor-pointer group">
+                    <div class="flex text-cyan-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-zinc-300 mb-6 leading-relaxed group-hover:text-white transition-colors">"The branding package was worth every penny. We went from looking amateur to premium. Sales doubled in 90 days."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-black font-bold group-hover:scale-110 transition-transform">AM</div>
+                        <div>
+                            <div class="font-bold">Dev</div>
+                            <div class="text-sm text-zinc-500">CEO, Praash.in</div>
                         </div>
                     </div>
                 </div>
@@ -302,163 +1080,485 @@
         </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="py-20 sm:py-28 bg-zinc-950 relative">
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
-                <div>
-                    <span class="text-cyan-400 font-medium text-lg sm:text-xl">LET'S GET STARTED</span>
-                    <h2 class="text-5xl sm:text-6xl font-bold tracking-tight leading-none mt-4">Ready to Scale Your Business?</h2>
-                    <p class="text-xl sm:text-2xl text-zinc-400 mt-6 sm:mt-8">Send us a message. We respond within 2 hours on business days.</p>
+    <!-- FAQ -->
+    <section class="py-24 bg-black">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Frequently Asked <span class="text-cyan-400">Questions</span></h2>
+                <p class="text-zinc-400">Everything you need to know about working with us.</p>
+            </div>
+            
+            <div class="space-y-4 reveal">
+                <div class="faq-item py-6 cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-medium pr-8">How long does a typical website project take?</h3>
+                        <i class="fas fa-chevron-down text-cyan-400 transition-transform duration-300 faq-icon"></i>
+                    </div>
+                    <div class="faq-content mt-4 text-zinc-400">
+                        <p>Most websites are delivered within 2-4 weeks, depending on complexity. E-commerce sites or custom web applications may take 6-8 weeks. We provide a detailed timeline during our strategy call.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item py-6 cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-medium pr-8">Do you offer monthly retainers or just one-time projects?</h3>
+                        <i class="fas fa-chevron-down text-cyan-400 transition-transform duration-300 faq-icon"></i>
+                    </div>
+                    <div class="faq-content mt-4 text-zinc-400">
+                        <p>We offer both! Our Starter package is project-based, while Growth and Enterprise are monthly retainers that include ongoing optimization, support, and marketing management.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item py-6 cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-medium pr-8">What makes MineDigital different from other agencies?</h3>
+                        <i class="fas fa-chevron-down text-cyan-400 transition-transform duration-300 faq-icon"></i>
+                    </div>
+                    <div class="faq-content mt-4 text-zinc-400">
+                        <p>We're a premium boutique agency focused on quality over quantity. You get direct access to senior strategists, custom solutions (no templates), and a guarantee of ROI-positive campaigns or we work for free.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item py-6 cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-medium pr-8">Do you work with clients outside Delhi NCR?</h3>
+                        <i class="fas fa-chevron-down text-cyan-400 transition-transform duration-300 faq-icon"></i>
+                    </div>
+                    <div class="faq-content mt-4 text-zinc-400">
+                        <p>Absolutely! While we're based in Greater Noida and love supporting local Delhi NCR businesses, we work with clients across India and internationally. Video calls make collaboration seamless.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-zinc-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <span class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-4 block">Start Your Project</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 leading-tight">Let's Create Something <span class="gradient-text">Amazing</span> Together</h2>
+                    <p class="text-zinc-400 text-lg mb-8">Ready to scale? Fill out the form and we'll get back to you within 2 hours with a custom strategy.</p>
                     
-                    <div class="mt-12 sm:mt-16 space-y-8 sm:space-y-10">
-                        <div class="flex gap-4 sm:gap-6 items-center">
-                            <i class="fas fa-phone text-3xl sm:text-4xl text-cyan-400"></i>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 group cursor-pointer">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-400/10 flex items-center justify-center text-cyan-400 text-xl group-hover:bg-cyan-400 group-hover:text-black transition-all magnetic-link">
+                                <i class="fas fa-phone"></i>
+                            </div>
                             <div>
                                 <div class="text-sm text-zinc-500">Call / WhatsApp</div>
-                                <a href="https://wa.me/918527565380" target="_blank" class="text-xl sm:text-2xl hover:text-cyan-400">+91 85275 65380</a>
+                                <a href="https://wa.me/918527565380" class="text-lg font-medium hover:text-cyan-400 transition magnetic-link">+91 85275 65380</a>
                             </div>
                         </div>
-                        <div class="flex gap-4 sm:gap-6 items-center">
-                            <i class="fas fa-envelope text-3xl sm:text-4xl text-cyan-400"></i>
+                        
+                        <div class="flex items-center gap-4 group cursor-pointer">
+                            <div class="w-12 h-12 rounded-xl bg-purple-400/10 flex items-center justify-center text-purple-400 text-xl group-hover:bg-purple-400 group-hover:text-black transition-all magnetic-link">
+                                <i class="fas fa-envelope"></i>
+                            </div>
                             <div>
                                 <div class="text-sm text-zinc-500">Email</div>
-                                <a href="mailto:ashishjune2007@gmail.com" class="text-xl sm:text-2xl hover:text-cyan-400">ashishjune2007@gmail.com</a>
+                                <a href="mailto:ashishjune2007@gmail.com" class="text-lg font-medium hover:text-cyan-400 transition magnetic-link">ashishjune2007@gmail.com</a>
                             </div>
                         </div>
-                        <div class="flex gap-4 sm:gap-6 items-center">
-                            <i class="fas fa-map-marker-alt text-3xl sm:text-4xl text-cyan-400"></i>
+                        
+                        <div class="flex items-center gap-4 group cursor-pointer">
+                            <div class="w-12 h-12 rounded-xl bg-pink-400/10 flex items-center justify-center text-pink-400 text-xl group-hover:bg-pink-400 group-hover:text-black transition-all magnetic-link">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
                             <div>
-                                <div class="text-sm text-zinc-500">Location</div>
-                                <div class="text-xl sm:text-2xl">Greater Noida, Phase 3<br>Delhi-NCR</div>
+                                <div class="text-sm text-zinc-500">Studio</div>
+                                <div class="text-lg font-medium">Greater Noida, Phase 3</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-zinc-900 rounded-3xl p-6 sm:p-10 md:p-16">
-                    <form action="https://formspree.io/f/xwvnrvan" method="POST" class="space-y-6 sm:space-y-8">
-                        <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-premium rounded-3xl p-8 sm:p-10 relative overflow-hidden reveal stagger-2">
+                    <!-- Success Message -->
+                    <div id="form-success" class="hidden absolute inset-0 bg-zinc-900 z-20 flex flex-col items-center justify-center p-8 text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-full flex items-center justify-center text-black text-3xl mb-6 animate-bounce">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Message Received!</h3>
+                        <p class="text-zinc-400 mb-6">We'll analyze your requirements and reach out within 2 hours.</p>
+                        <button onclick="resetForm()" class="px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-cyan-400 transition magnetic-link">Send Another</button>
+                    </div>
+
+                    <!-- Loading -->
+                    <div id="form-loading" class="hidden absolute inset-0 bg-zinc-900/90 backdrop-blur z-10 flex items-center justify-center">
+                        <div class="flex flex-col items-center gap-4">
+                            <div class="w-12 h-12 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
+                            <span class="text-cyan-400 font-medium">Sending...</span>
+                        </div>
+                    </div>
+
+                    <form id="contact-form" action="https://formspree.io/f/xwvnrvan" method="POST" class="space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm mb-2 text-zinc-400">Your Name *</label>
-                                <input type="text" name="name" required class="w-full bg-black border border-white/20 rounded-2xl px-5 py-4 sm:px-6 sm:py-5 focus:border-cyan-400 outline-none transition">
+                                <label class="block text-sm text-zinc-400 mb-2">Name *</label>
+                                <input type="text" name="name" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:outline-none transition-colors hover:border-white/30">
                             </div>
                             <div>
-                                <label class="block text-sm mb-2 text-zinc-400">Business Name</label>
-                                <input type="text" name="business_name" class="w-full bg-black border border-white/20 rounded-2xl px-5 py-4 sm:px-6 sm:py-5 focus:border-cyan-400 outline-none transition">
+                                <label class="block text-sm text-zinc-400 mb-2">Business</label>
+                                <input type="text" name="business_name" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:outline-none transition-colors hover:border-white/30">
+                            </div>
+                        </div>
+                        
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm text-zinc-400 mb-2">Phone *</label>
+                                <input type="tel" name="phone" required pattern="[0-9]{10,}" title="Please enter a valid phone number" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:outline-none transition-colors hover:border-white/30">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-zinc-400 mb-2">Email</label>
+                                <input type="email" name="_replyto" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:outline-none transition-colors hover:border-white/30">
                             </div>
                         </div>
                         
                         <div>
-                            <label class="block text-sm mb-2 text-zinc-400">Phone / WhatsApp *</label>
-                            <input type="tel" name="phone" required class="w-full bg-black border border-white/20 rounded-2xl px-5 py-4 sm:px-6 sm:py-5 focus:border-cyan-400 outline-none transition">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm mb-2 text-zinc-400">Email</label>
-                            <input type="email" name="_replyto" class="w-full bg-black border border-white/20 rounded-2xl px-5 py-4 sm:px-6 sm:py-5 focus:border-cyan-400 outline-none transition">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm mb-2 text-zinc-400">Service Interested In</label>
-                            <select name="service" class="w-full bg-black border border-white/20 rounded-2xl px-5 py-4 sm:px-6 sm:py-5 focus:border-cyan-400 outline-none transition">
-                                <option value="">Select one...</option>
-                                <option value="website">Website Development</option>
-                                <option value="marketing">Digital Marketing</option>
-                                <option value="both">Both</option>
-                                <option value="branding">Branding & Creative</option>
+                            <label class="block text-sm text-zinc-400 mb-2">Interested In</label>
+                            <select name="service" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:outline-none transition-colors text-zinc-300 hover:border-white/30 cursor-pointer">
+                                <option value="">Select a service...</option>
+                                <option value="starter">Starter Package (₹25k)</option>
+                                <option value="growth">Growth Package (₹75k/mo)</option>
+                                <option value="enterprise">Enterprise (Custom)</option>
+                                <option value="other">Something Else</option>
                             </select>
                         </div>
                         
                         <div>
-                            <label class="block text-sm mb-2 text-zinc-400">Project Details *</label>
-                            <textarea name="message" rows="5" required class="w-full bg-black border border-white/20 rounded-3xl px-5 py-4 sm:px-6 sm:py-5 focus:border-cyan-400 outline-none transition"></textarea>
+                            <label class="block text-sm text-zinc-400 mb-2">Project Details *</label>
+                            <textarea name="message" rows="4" required minlength="10" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:outline-none transition-colors resize-none hover:border-white/30"></textarea>
                         </div>
                         
-                        <input type="text" name="_gotcha" style="display:none" />
+                        <input type="text" name="_gotcha" style="display:none">
                         
-                        <button type="submit" class="w-full py-6 sm:py-7 bg-gradient-to-r from-cyan-400 to-purple-500 hover:from-cyan-300 hover:to-purple-400 text-black font-bold text-lg sm:text-xl rounded-3xl transition-all">
-                            Submit Inquiry → We'll Reach Out
+                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-bold rounded-xl hover:shadow-lg hover:shadow-cyan-400/30 transition-all transform hover:-translate-y-1 magnetic-link">
+                            Get Free Strategy Call
                         </button>
+                        
+                        <p class="text-xs text-zinc-500 text-center">By submitting, you agree to our privacy policy. No spam, ever.</p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-black py-16 sm:py-20 border-t border-white/10">
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between gap-10 sm:gap-12">
-                <div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 bg-cyan-400 rounded-2xl flex items-center justify-center text-black font-bold text-2xl logo-font">M</div>
-                        <span class="logo-font text-4xl font-semibold tracking-tighter">MineDigital</span>
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                        <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-xl flex items-center justify-center text-black font-bold text-xl">M</div>
+                        <span class="logo-font text-2xl font-bold">MineDigital</span>
                     </div>
-                    <p class="text-zinc-500 mt-4 sm:mt-6 max-w-xs">Professional digital studio based in Greater Noida, helping brands scale online across Delhi NCR.</p>
+                    <p class="text-zinc-400 max-w-sm mb-6">Premium digital agency helping businesses in Delhi NCR scale with world-class websites and performance marketing.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition-all magnetic-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition-all magnetic-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://wa.me/918527565380" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition-all magnetic-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="grid grid-cols-3 gap-10 sm:gap-16">
-                    <div>
-                        <div class="font-medium mb-4">Company</div>
-                        <ul class="space-y-3 text-zinc-400 text-sm sm:text-base">
-                            <li><a href="#about" class="hover:text-white">About Us</a></li>
-                            <li><a href="#" class="hover:text-white">Careers</a></li>
-                            <li><a href="#contact" class="hover:text-white">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="font-medium mb-4">Services</div>
-                        <ul class="space-y-3 text-zinc-400 text-sm sm:text-base">
-                            <li><a href="#services" class="hover:text-white">Website Development</a></li>
-                            <li><a href="#services" class="hover:text-white">Digital Marketing</a></li>
-                            <li><a href="#services" class="hover:text-white">Branding</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="font-medium mb-4">Connect</div>
-                        <div class="flex gap-6 text-2xl sm:text-3xl">
-                            <a href="#" class="hover:text-cyan-400"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="hover:text-cyan-400"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://wa.me/918527565380?text=Hi%20MineDigital!" class="hover:text-cyan-400"><i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
+                <div>
+                    <h4 class="font-bold mb-6">Services</h4>
+                    <ul class="space-y-3 text-zinc-400">
+                        <li><a href="#services" class="hover:text-cyan-400 transition magnetic-link">Website Development</a></li>
+                        <li><a href="#services" class="hover:text-cyan-400 transition magnetic-link">Digital Marketing</a></li>
+                        <li><a href="#services" class="hover:text-cyan-400 transition magnetic-link">SEO & Content</a></li>
+                        <li><a href="#services" class="hover:text-cyan-400 transition magnetic-link">Branding</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Company</h4>
+                    <ul class="space-y-3 text-zinc-400">
+                        <li><a href="#about" class="hover:text-cyan-400 transition magnetic-link">About Us</a></li>
+                        <li><a href="#work" class="hover:text-cyan-400 transition magnetic-link">Portfolio</a></li>
+                        <li><a href="#pricing" class="hover:text-cyan-400 transition magnetic-link">Pricing</a></li>
+                        <li><a href="#contact" class="hover:text-cyan-400 transition magnetic-link">Contact</a></li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="text-center text-zinc-500 text-sm mt-12 sm:mt-20">
-                © 2026 MineDigital.online • Greater Noida, Delhi NCR
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-zinc-500 text-sm">
+                    © 2026 MineDigital. All rights reserved.
+                </div>
+                <div class="text-zinc-500 text-sm flex gap-6">
+                    <a href="#" class="hover:text-white transition magnetic-link">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition magnetic-link">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
     <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Custom Cursor
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorOutline = document.getElementById('cursor-outline');
+        
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+        
+        // Magnetic effect for links
+        document.querySelectorAll('.magnetic-link').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                cursorOutline.classList.add('hover');
+            });
+            link.addEventListener('mouseleave', () => {
+                cursorOutline.classList.remove('hover');
+            });
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + "%";
+            
+            // Back to top button visibility
+            const backToTop = document.getElementById('back-to-top');
+            if (winScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Generate Particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Mobile Menu
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
         mobileBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
             const icon = mobileBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-xmark');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
         });
-        
+
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                if (this.getAttribute('href') !== '#') {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
                 }
             });
         });
-        
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                const icon = mobileBtn.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-xmark');
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Trigger counters if this is the stats section
+                    const counters = entry.target.querySelectorAll('.counter-value');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+                        
+                        const timer = setInterval(() => {
+                            current += step;
+                            if (current >= target) {
+                                counter.textContent = target + (target === 98 ? '%' : '+');
+                                clearInterval(timer);
+                            } else {
+                                counter.textContent = Math.floor(current) + (target === 98 ? '%' : '+');
+                            }
+                        }, 16);
+                    });
+                }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const isActive = element.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
+
+        // Toast Notification System
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            
+            const icon = type === 'success' ? '<i class="fas fa-check"></i>' : '<i class="fas fa-exclamation-circle"></i>';
+            
+            toast.innerHTML = `
+                <div class="toast-icon">${icon}</div>
+                <div class="toast-message">${message}</div>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => toast.classList.add('show'), 10);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Form Handling
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+        const formLoading = document.getElementById('form-loading');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validation
+            const phone = contactForm.querySelector('input[name="phone"]').value;
+            if (!/^\d{10,}$/.test(phone)) {
+                showToast('Please enter a valid phone number', 'error');
+                return;
+            }
+            
+            formLoading.classList.remove('hidden');
+            
+            const formData = new FormData(contactForm);
+            
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    formLoading.classList.add('hidden');
+                    formSuccess.classList.remove('hidden');
+                    contactForm.reset();
+                    showToast('Message sent successfully!');
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                formLoading.classList.add('hidden');
+                showToast('Failed to send message. Please try WhatsApp.', 'error');
+            }
+        });
+
+        function resetForm() {
+            formSuccess.classList.add('hidden');
+        }
+
+        // Portfolio Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.classList.remove('hidden');
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => item.classList.add('hidden'), 300);
+                    }
+                });
+            });
+        });
+
+        // Load More (Simulated)
+        document.getElementById('load-more').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                showToast('All projects loaded');
+                this.style.display = 'none';
+            }, 1000);
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const nav = document.getElementById('navbar');
+            
+            if (currentScroll > 100) {
+                nav.classList.add('shadow-lg', 'shadow-black/20');
+            } else {
+                nav.classList.remove('shadow-lg', 'shadow-black/20');
+            }
+            
+            lastScroll = currentScroll;
         });
     </script>
 </body>
